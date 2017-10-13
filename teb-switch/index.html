@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.box{
+			margin: 50px auto;
+			width: 400px;
+			height: 400px;
+			border: 2px solid red;
+		}
+		.clearfix:after{
+			content:"";
+			display:block;
+			clear: both;
+		}
+		.clearfix{
+			zoom:1;
+		}
+		.title li{
+			text-align: center;
+			width: 132px;
+			height: 50px;
+			line-height: 50px;
+			list-style: none;
+			float:left;
+			border-right:2px solid red;
+			border-bottom:2px solid red; 
+		}
+		.title li:last-child{
+			border-right:none;
+		}
+		.active{
+			color:#fff;
+			background:red;
+		}
+		.b2 div{
+			text-align: center;
+			line-height: 344px;
+			display: none;
+		}
+		.b2 .content{
+			display: block;
+		}
+	</style>
+	<body>
+		
+		<div class="box">
+			<ul class="title clearfix">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div class="b2">
+				<div class="content">1</div>
+				<div>2</div>
+				<div>3</div>
+			</div>
+			
+		</div>
+		
+		<script src="http://libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+		<script type="text/javascript">
+
+
+
+			$.fn.extend({
+				Tab:function(obj){
+					obj.find(".title li").click(function(){
+						$(this).addClass("active").siblings().removeClass();
+						obj.find(".b2 div").eq($(this).index()).addClass("content").siblings().removeClass();
+					})
+					
+				}
+			})
+			
+			$(document).Tab($(".box"));
+		
+		
+		
+			
+		</script>
+	</body>
+</html>
